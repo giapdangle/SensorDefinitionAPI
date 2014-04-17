@@ -5,22 +5,107 @@ HOST: http://www.google.com
 An API for defining Sensors. We define both data about the physical sensor itself, and MetaData about the information the Sensor delivers
 
 # Group General
-## Hardware Collection [/sensors]
+## Sensor Collection [/sensors/{sensorID}]
+The system contains a list of many sensor definitions. This endpoint will return a list, add or delete sensors or modify an sensor within the list
+
+### get colection of sensors [GET]
+Retreive a list of Sensor Definitions from within the system
+
++ Response 200 (application/json)
+   
+     + Body
+     
+            {
+                "sensors" : [{
+                    "id"  : '550e8400-e29b-41d4-a716-446655456789', 
+                    "manufacturer" : relayr,
+                    "name": 'Temperature / Humidity Sensor',
+                    "productNumber"   : "rWB001"
+                },{
+                    "id"  : '550e8400-e29b-41d4-a716-446655456790', 
+                    "manufacturer" : relayr,
+                    "name": 'Sound Level Sensor',
+                    "productNumber"   : "rWB002"
+                },{
+                    "id"  : '550e8400-e29b-41d4-a716-446655456791', 
+                    "manufacturer" : relayr,
+                    "name": 'Accelerometer / Gyrosope',
+                    "productNumber"   : "rWB003"
+                },{
+                    "id"  : '550e8400-e29b-41d4-a716-446655456791', 
+                    "manufacturer" : relayr,
+                    "name": 'Light / Color / Proximity Sensor',
+                    "productNumber"   : "rWB003"
+                }]
+            }
+
+### Adds a Sensor [POST]
+Adds a Sensor to the list
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    
++ Request (application/json)
+    
+        { 
+            "id"  : '550e8400-e29b-41d4-a716-446655456791', 
+            "manufacturer" : relayr,
+            "name": 'Light / Color / Proximity Sensor',
+            "productNumber"   : "rWB003"
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "updated":true
+            }
+           
+### Update a Sensor [PATCH]
+Modifies a Sensor in the list
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    
++ Request (application/json)
+    
+        { 
+            "name" : 'Temperature & Humidity Sensor'
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "updated":true
+            }
+            
+### Delete a sensors [DELETE]
+removes a sensor from the list
+
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    
++ Response 204
+
 
 # Group Hardware
 Hardware related resource of the **Sensor Definition**
 
-## Hardware Collection [/sensors/{sensorID}/description/hardware]
+## Hardware [/sensors/{sensorID}/description/hardware]
 
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    
 # Group Firmware
 Firmware related resource of the **Sensor Definition**
 
-## Firmware Collection [/sensor/{sensorID}/description/firmware]
+## Firmware [/sensor/{sensorID}/description/firmware]
 
 # Group Readings
 Firmware related resource of the **Sensor Definition**
 
-## Readings Collection [/sensor/{sensorID}/description/readings]
+## Readings [/sensor/{sensorID}/description/readings]
 
 
 
