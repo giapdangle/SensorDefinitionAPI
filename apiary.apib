@@ -5,10 +5,10 @@ HOST: http://www.google.com
 An API for defining Sensors. We define both data about the physical sensor itself, and MetaData about the information the Sensor delivers
 
 # Group General
-## Sensor Collection [/sensors/{sensorID}]
+## Sensor Collection [/sensors]
 The system contains a list of many sensor definitions. This endpoint will return a list, add or delete sensors or modify an sensor within the list
 
-### get colection of sensors [GET]
+### get colection of sensor definitions [GET]
 Retreive a list of Sensor Definitions from within the system
 
 + Response 200 (application/json)
@@ -39,7 +39,7 @@ Retreive a list of Sensor Definitions from within the system
                 }]
             }
 
-### Adds a Sensor [POST]
+### Adds a Sensor definition [POST]
 Adds a Sensor to the list
 
 + Request (application/json)
@@ -59,7 +59,23 @@ Adds a Sensor to the list
                 "updated":true
             }
            
-### Update a Sensor [PATCH]
+## Sensor [/sensors/{sensorID}]
+### get colection of sensor definitions [GET]
+Retreive a list of Sensor Definitions from within the system
+
++ Response 200 (application/json)
+   
+     + Body
+     
+            {
+            
+                "id"  : '550e8400-e29b-41d4-a716-446655456789', 
+                "manufacturer" : relayr,
+                "name": 'Temperature / Humidity Sensor',
+                "productNumber"   : "rWB001"
+            }
+
+### Update a Sensor definition [PATCH]
 Modifies a Sensor in the list
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
@@ -78,7 +94,7 @@ Modifies a Sensor in the list
                 "updated":true
             }
             
-### Delete a sensors [DELETE]
+### Delete a sensor definition [DELETE]
 removes a sensor from the list
 
 + Parameters
@@ -108,8 +124,8 @@ Communication related resource of the **Sensor Definition**
 # Group Readings
 Firmware related resource of the **Sensor Definition**
 
-## Readings [/sensor/{sensorID}/description/readings/{readingID}]
-### get list of readings available from of a sensor [GET]
+## Sensor Readings [/sensor/{sensorID}/description/readings]
+### get list of reading definitions available from of a sensor [GET]
 
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
@@ -136,7 +152,7 @@ Firmware related resource of the **Sensor Definition**
                 }]
             }
 
-### Adds a reading [POST]
+### Adds a reading definition [POST]
 Adds a reading to the list
 
 + Request (application/json)
@@ -158,10 +174,27 @@ Adds a reading to the list
                 "updated":true
             }
            
-### Update a reading [PATCH]
-Modifies a reading in the list
+## Sensor Reading Definitions [/sensor/{sensorID}/description/readings/{readingID}]
 + Parameters
     + readingID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+
+### get a reading definition from of a sensor [GET]
+
++ Response 200 (application/json)
+   
+     + Body
+     
+            {
+                "id"  : '550e8400-e29b-41d4-a716-446655456789', 
+                "type" : 'temperature'
+                "minimum" : -100,
+                "maximum": 100,
+                "units"   : "celsius",
+                "precision" : 0.01
+            }
+
+### Update a reading definition [PATCH]
+Modifies a reading in the list
     
 + Request (application/json)
     
@@ -177,12 +210,9 @@ Modifies a reading in the list
                 "updated":true
             }
             
-### Delete a reading [DELETE]
-removes a sensor from the list
-
-+ Parameters
-    + readingID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
-    
+### Delete a reading definition [DELETE]
+removes a reading from the list
+   
 + Response 204
 
 
