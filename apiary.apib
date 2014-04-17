@@ -41,9 +41,7 @@ Retreive a list of Sensor Definitions from within the system
 
 ### Adds a Sensor [POST]
 Adds a Sensor to the list
-+ Parameters
-    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
-    
+
 + Request (application/json)
     
         { 
@@ -102,10 +100,89 @@ Firmware related resource of the **Sensor Definition**
 
 ## Firmware [/sensor/{sensorID}/description/firmware]
 
+# Group Communcation
+Communication related resource of the **Sensor Definition**
+
+## Firmware [/sensor/{sensorID}/description/communications]
+
 # Group Readings
 Firmware related resource of the **Sensor Definition**
 
-## Readings [/sensor/{sensorID}/description/readings]
+## Readings [/sensor/{sensorID}/description/readings/{readingID}]
+### get list of readings available from of a sensor [GET]
 
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    
++ Response 200 (application/json)
+   
+     + Body
+     
+            {
+                "readings" : [{
+                    "id"  : '550e8400-e29b-41d4-a716-446655456789', 
+                    "type" : 'temperature'
+                    "minimum" : -100,
+                    "maximum": 100,
+                    "units"   : "celsius",
+                    "precision" : 0.01
+                },{
+                    "id"  : '550e8400-e29b-41d4-a716-446655456781', 
+                    "type" : 'humidity'
+                    "minimum" : 0,
+                    "maximum": 100,
+                    "units"   : "% Relative Humidity",
+                    "precision" : 0.01
+                }]
+            }
+
+### Adds a reading [POST]
+Adds a reading to the list
+
++ Request (application/json)
+    
+        {
+            "id"  : '550e8400-e29b-41d4-a716-446655456781', 
+            "type" : 'humidity'
+            "minimum" : 0,
+            "maximum": 100,
+            "units"   : "% Relative Humidity",
+            "precision" : 0.01
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "updated":true
+            }
+           
+### Update a reading [PATCH]
+Modifies a reading in the list
++ Parameters
+    + readingID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    
++ Request (application/json)
+    
+        { 
+            "maximum" : 120
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "updated":true
+            }
+            
+### Delete a reading [DELETE]
+removes a sensor from the list
+
++ Parameters
+    + readingID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    
++ Response 204
 
 
