@@ -5,7 +5,7 @@ HOST: http://www.google.com
 An API for defining Sensors. We define both data about the physical sensor itself, and MetaData about the information the Sensor delivers
 
 # Group General
-## Sensor Collection [/sensors]
+## Sensor Definitions Collection [/sensors]
 The system contains a list of many sensor definitions. This endpoint will return a list, add or delete sensors or modify an sensor within the list
 
 ### get colection of sensor definitions [GET]
@@ -59,7 +59,7 @@ Adds a Sensor to the list
                 "updated":true
             }
            
-## Sensor [/sensors/{sensorID}]
+## Sensor Definition [/sensors/{sensorID}]
 ### get colection of sensor definitions [GET]
 Retreive a list of Sensor Definitions from within the system
 
@@ -106,7 +106,7 @@ removes a sensor from the list
 # Group Hardware
 Hardware related resource of the **Sensor Definition**
 
-## Hardware [/sensors/{sensorID}/description/hardware]
+## Hardware Definition [/sensors/{sensorID}/description/hardware]
 
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
@@ -114,17 +114,17 @@ Hardware related resource of the **Sensor Definition**
 # Group Firmware
 Firmware related resource of the **Sensor Definition**
 
-## Firmware [/sensor/{sensorID}/description/firmware]
+## Firmware Definition [/sensor/{sensorID}/description/firmware]
 
 # Group Communcation
 Communication related resource of the **Sensor Definition**
 
-## Firmware [/sensor/{sensorID}/description/communications]
+## Firmware Definition [/sensor/{sensorID}/description/communications]
 
 # Group Readings
 Firmware related resource of the **Sensor Definition**
 
-## Sensor Readings [/sensor/{sensorID}/description/readings]
+## Sensor Reading Definitions [/sensor/{sensorID}/description/readings]
 ### get list of reading definitions available from of a sensor [GET]
 
 + Parameters
