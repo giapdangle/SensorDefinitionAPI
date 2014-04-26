@@ -221,7 +221,7 @@ Hardware related resource of the **Sensor Definition**
 + Response 200 (application/hal+json)
 [Hardware Definition][]
 
-### get current Hardware definition [DELETE]
+### remove current Hardware definition [DELETE]
 
 + Response 204
 
@@ -357,16 +357,67 @@ removes a Firmware release from the list
 + Response 204
 
 
-
-# Group Readings
-Firmware r# Group Communcation
+# Group Communcation
 Communication related resource of the **Sensor Definition**
 
+## Communication Definition [/sensordefinitions/{sensorID}/communications]
 
-## Communications [/sensordefinitions/{sensorID}/communications]
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
-elated resource of the **Sensor Definition**
+    
++ Model (application/hal+json)
+    + Headers
+
+            Link: <http:/example.org/sensor/550e8400-e29b-41d4-a716-446655456789/communication>;rel="self"
+            
+    + Body 
+    
+            {
+                "_links": {
+                    "self": {
+                        "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/communication"
+                    }
+                }
+                "protocol" : "MQTT",
+                "encryption" : "TLS 1.2"
+            }
+            
+### get current Communication definition [GET]
+
++ Response 200 (application/hal+json)
+[Communication Definition][]
+
+### get current Communication definition [POST]
+
++ Request
+    + Body 
+    
+            {
+                "protocol" : "MQTT",
+                "encryption" : "TLS 1.2"
+            }
+
++ Response 201 (application/hal+json)
+[Communication Definition][]
+
+### get current Communication definition [PATCH]
+
++ Request
+    + Body 
+    
+            {
+                "protocol" : "MQTT",
+                "encryption" : "TLS 1.2"
+            }
+
++ Response 200 (application/hal+json)
+[Communication Definition][]
+
+### remove current Communication definition [DELETE]
+
++ Response 204
+
+# Group Readings
 
 ## Sensor Reading Definitions [/sensordefinitions/{sensorID}/readings]
 ### get list of reading definitions available from of a sensor [GET]
@@ -379,22 +430,34 @@ elated resource of the **Sensor Definition**
      + Body
      
             {
-                "readings" : [{
-                    "id"  : '550e8400-e29b-41d4-a716-446655456789', 
-                    "type" : 'temperature'
-                    "minimum" : -100,
-                    "maximum": 100,
-                    "units"   : "celsius",
-                    "precision" : 0.01
-                },{
-                    "id"  : '550e8400-e29b-41d4-a716-446655456781', 
-                    "type" : 'humidity'
-                    "minimum" : 0,
-                    "maximum": 100,
-                    "units"   : "% Relative Humidity",
-                    "precision" : 0.01
-                }]
-            }
+                "_links": {
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings" }
+                    },
+                "_embedded": {
+                    "readings" : [{
+                        "_links" : {
+                            "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" }
+                        },
+                        "id"  : '550e8400-e29b-41d4-a716-446655456711', 
+                        "type" : 'temperature'
+                        "minimum" : -100,
+                        "maximum": 100,
+                        "units"   : "celsius",
+                        "precision" : 0.01
+                    },{
+                        "_links" : {
+                            "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456711/description/readings/550e8400-e29b-41d4-a716-446655456781" }
+                        },
+                        "id"  : '550e8400-e29b-41d4-a716-446655456781', 
+                        "type" : 'humidity'
+                        "minimum" : 0,
+                        "maximum": 100,
+                        "units"   : "% Relative Humidity",
+                        "precision" : 0.01
+                    }]
+                },
+                "total": 1
+            }´
 
 ### Adds a reading definition [POST]
 Adds a reading to the list
@@ -414,7 +477,7 @@ Adds a reading to the list
     
             {
                 "_links" : {
-                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" }
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/readings/550e8400-e29b-41d4-a716-446655456781" }
                 },
                 "id"  : '550e8400-e29b-41d4-a716-446655456781', 
                 "type" : 'humidity',
@@ -425,6 +488,7 @@ Adds a reading to the list
             }
            
 ## Reading [/sensordefinitions/{sensorID}/readings/{readingID}]
+
 + Parameters
     + readingID (required, string, `550e8400-e29b-41d4-a716-446655456777`) ... String `id` of the Sensor
 
