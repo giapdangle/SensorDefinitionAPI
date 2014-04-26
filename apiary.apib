@@ -4,40 +4,80 @@ HOST: http://www.google.com
 # SensorDefinitionAPI
 An API for defining Sensors. We define both data about the physical sensor itself, and MetaData about the information the Sensor delivers
 
+
+
 # Group General
-## Sensor Definitions Collection [/sensors]
+## Sensor Definitions Collection [/sensordefinitions]
 The system contains a list of many sensor definitions. This endpoint will return a list, add or delete sensors or modify an sensor within the list
 
-### get colection of sensor definitions [GET]
-Retreive a list of Sensor Definitions from within the system
 
-+ Response 200 (application/json)
-   
-     + Body
++ Model
+    + Body
      
             {
-                "sensors" : [{
+                "_links": {
+                    "self": {
+                        "href": "http://example.org/sensors"
+                    }
+                },
+                "sensors" : [
+                {
+                    "_links": {
+                        "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789"},
+                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/hardware"},
+                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/firmware"},
+                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/communication"},
+                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/readings"}
+                    },
                     "id"  : '550e8400-e29b-41d4-a716-446655456789', 
                     "manufacturer" : relayr,
                     "name": 'Temperature / Humidity Sensor',
                     "productNumber"   : "rWB001"
                 },{
+                    "_links": {
+                        "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790"},
+                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/hardware"},
+                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/firmware"},
+                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/communication"},
+                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/readings"}
+                    },
                     "id"  : '550e8400-e29b-41d4-a716-446655456790', 
                     "manufacturer" : relayr,
                     "name": 'Sound Level Sensor',
                     "productNumber"   : "rWB002"
                 },{
+                    "_links": {
+                        "self": { "href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791"},
+                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/hardware"},
+                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/firmware"},
+                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/communication"},
+                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/readings"}
+                    },
                     "id"  : '550e8400-e29b-41d4-a716-446655456791', 
                     "manufacturer" : relayr,
                     "name": 'Accelerometer / Gyrosope',
                     "productNumber"   : "rWB003"
                 },{
-                    "id"  : '550e8400-e29b-41d4-a716-446655456791', 
+                    "_links": {
+                        "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792"},
+                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/hardware"},
+                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/firmware"},
+                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/communication"},
+                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/readings"}
+                    },
+                    "id"  : '550e8400-e29b-41d4-a716-446655456792', 
                     "manufacturer" : relayr,
                     "name": 'Light / Color / Proximity Sensor',
                     "productNumber"   : "rWB003"
                 }]
             }
+
+### get colection of sensor definitions [GET]
+Retreive a list of Sensor Definitions from within the system
+
++ Response 200 (application/hal+json)
+[Sensor Definitions Collection][]
+
 
 ### Adds a Sensor definition [POST]
 Adds a Sensor to the list
@@ -45,35 +85,53 @@ Adds a Sensor to the list
 + Request (application/json)
     
         { 
-            "id"  : '550e8400-e29b-41d4-a716-446655456791', 
             "manufacturer" : relayr,
             "name": 'Light / Color / Proximity Sensor',
             "productNumber"   : "rWB003"
         }
 
-+ Response 200 (application/json)
++ Response 201 (application/hal+json)
 
     + Body
 
             { 
-                "updated":true
+                "_links": {
+                    "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792"},
+                    "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/hardware"},
+                    "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/firmware"},
+                    "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/communication"},
+                    "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/readings"}
+                },
+                "id"  : '550e8400-e29b-41d4-a716-446655456792'
+                "manufacturer" : relayr,
+                "name": 'Light / Color / Proximity Sensor',
+                "productNumber"   : "rWB003"
             }
-           
-## Sensor Definition [/sensors/{sensorID}]
-### get colection of sensor definitions [GET]
+        
+## Sensor Definition [/sensordefinitions/{sensorID}]
+
++ Model
+    + Body
+
+            { 
+                "_links": {
+                    "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792"},
+                    "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/hardware"},
+                    "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/firmware"},
+                    "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/communication"},
+                    "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/readings"}
+                },
+                "id"  : '550e8400-e29b-41d4-a716-446655456792'
+                "manufacturer" : relayr,
+                "name": 'Light / Color / Proximity Sensor',
+                "productNumber"   : "rWB003"
+            }
+     
+### get sensor definition [GET]
 Retreive a list of Sensor Definitions from within the system
 
-+ Response 200 (application/json)
-   
-     + Body
-     
-            {
-            
-                "id"  : '550e8400-e29b-41d4-a716-446655456789', 
-                "manufacturer" : relayr,
-                "name": 'Temperature / Humidity Sensor',
-                "productNumber"   : "rWB001"
-            }
++ Response 200 (application/hal+json)
+[Sensor Definition][]
 
 ### Update a Sensor definition [PATCH]
 Modifies a Sensor in the list
@@ -86,13 +144,8 @@ Modifies a Sensor in the list
             "name" : 'Temperature & Humidity Sensor'
         }
 
-+ Response 200 (application/json)
-
-    + Body
-
-            { 
-                "updated":true
-            }
++ Response 200 (application/hal+json)
+[Sensor Definition][]
             
 ### Delete a sensor definition [DELETE]
 removes a sensor from the list
@@ -102,29 +155,220 @@ removes a sensor from the list
     
 + Response 204
 
+           
+
+
+
+
 
 # Group Hardware
 Hardware related resource of the **Sensor Definition**
 
-## Hardware Definition [/sensors/{sensorID}/description/hardware]
+## Hardware Definition [/sensordefinitions/{sensorID}/hardware]
 
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
     
++ Model (application/hal+json)
+    + Headers
+
+            Link: <http:/example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/hardware>;rel="self"
+            
+    + Body 
+    
+            {
+                "_links": {
+                    "self": {
+                        "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/hardware"
+                    }
+                }
+                date: 1398512005,
+                voltage: "3.3v",
+                power: "CR3032 coin-cell"
+                release-notes: "lorem ipsum"
+                dimensions: {width:23, height: 15, depth: 45, units: "mm"}
+            }
+            
+### get current Hardware definition [GET]
+
++ Response 200 (application/hal+json)
+[Hardware Definition][]
+
+### get current Hardware definition [POST]
+
++ Request
+    + Body 
+    
+            {
+                date: 1398512005,
+                voltage: "3.3v",
+                release-notes: "lorem ipsum"
+            }
+
++ Response 201 (application/hal+json)
+[Hardware Definition][]
+
+### get current Hardware definition [PATCH]
+
++ Request
+    + Body 
+    
+            {
+                power: "CR3032 coin-cell",
+                release-notes: "lorem ipsum delor"
+            }
+
++ Response 200 (application/hal+json)
+[Hardware Definition][]
+
+### get current Hardware definition [DELETE]
+
++ Response 204
+
 # Group Firmware
 Firmware related resource of the **Sensor Definition**
 
-## Firmware Definition [/sensor/{sensorID}/description/firmware]
+## Firmware [/sensordefinitions/{sensorID}/firmware]
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
 
-# Group Communcation
-Communication related resource of the **Sensor Definition**
++ Model (application/hal+json)
+    + Headers
 
-## Firmware Definition [/sensor/{sensorID}/description/communications]
+            Link: <http:/example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware>;rel="self"
+            
+    + Body 
+    
+            {
+                "_links": {
+                    "self": {
+                        "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware"
+                    }
+                    "download": {"href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" }
+                }
+                version: "0.2",
+                date: 1398512005,
+                name: "RC1",
+                release-notes: "lorem ipsum"
+                "_embedded": {
+                    history: {
+                        "_links": {
+                            "self": {
+                                "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history"
+                            }
+                        }
+                    }
+                }
+            }
+
+### get current Firmware release [GET]
+
++ Response 200 (application/hal+json)
+[Firmware][]
+
+
+
+## Firmware History [/sensordefinitions/{sensorID}/firmware/history/{version}]
+
+
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+
++ Model (application/hal+json)
+
+    HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation.
+
+    + Headers
+
+            Link: <http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history>;rel="self"
+
+    + Body
+
+            {
+                "_links": {
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history" }
+                    "latest": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware" },
+                    "stable": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" },
+                    "nightly": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" },
+                },
+                "_embedded": {
+                    "history": [
+                        {
+                            "_links" : {
+                                "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" }
+                                "download": { "href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" }
+                            },
+                            version: "0.1",
+                            date: 1398512005,
+                            name: "RC1",
+                            release-notes: "lorem ipsum"
+                        }
+                    ]
+                },
+                "total": 1
+            }
+
+### get Firmware History [GET]
+
++ Response 200 (application/hal+json)
+[Firmware History][]
+
+### add a Firmware release to the history [POST]
+
++ Request
+    + Body
+    
+            {
+                version: "0.01",
+                date: 13985412005,
+                name: "RC1",
+                release-notes: "lorem ipsum"
+            }
+
++ Response 201 (application/hal+json)
+[Firmware][]
+
+### update a Firmware release [PATCH]
+
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    + version (required, string, `0.1`) ... String `version number` of the Firmware release
+
++ Request
+
+    + Body
+    
+            {
+                name: "RC1"
+            }
+
++ Response 200 (application/hal+json)
+[Firmware][]
+
+
+### Delete a Firmware release [DELETE]
+removes a Firmware release from the list
+
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    + version (required, string, `0.1`) ... String `version number` of the Firmware release
+
+   
++ Response 204
+
+
 
 # Group Readings
-Firmware related resource of the **Sensor Definition**
+Firmware r# Group Communcation
+Communication related resource of the **Sensor Definition**
 
-## Sensor Reading Definitions [/sensor/{sensorID}/description/readings]
+
+## Communications [/sensordefinitions/{sensorID}/communications]
++ Parameters
+    + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+elated resource of the **Sensor Definition**
+
+## Sensor Reading Definitions [/sensordefinitions/{sensorID}/readings]
 ### get list of reading definitions available from of a sensor [GET]
 
 + Parameters
@@ -158,7 +402,6 @@ Adds a reading to the list
 + Request (application/json)
     
         {
-            "id"  : '550e8400-e29b-41d4-a716-446655456781', 
             "type" : 'humidity'
             "minimum" : 0,
             "maximum": 100,
@@ -166,32 +409,46 @@ Adds a reading to the list
             "precision" : 0.01
         }
 
-+ Response 200 (application/json)
-
++ Response 201 (application/hal+json)
     + Body
-
-            { 
-                "updated":true
+    
+            {
+                "_links" : {
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" }
+                },
+                "id"  : '550e8400-e29b-41d4-a716-446655456781', 
+                "type" : 'humidity',
+                "minimum" : 0,
+                "maximum": 100,
+                "units"   : "% Relative Humidity",
+                "precision" : 0.01
             }
            
-## Sensor Reading Definitions [/sensor/{sensorID}/description/readings/{readingID}]
+## Reading [/sensordefinitions/{sensorID}/readings/{readingID}]
 + Parameters
-    + readingID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
+    + readingID (required, string, `550e8400-e29b-41d4-a716-446655456777`) ... String `id` of the Sensor
 
-### get a reading definition from of a sensor [GET]
++ Model    
 
-+ Response 200 (application/json)
-   
-     + Body
+    + Body
      
             {
-                "id"  : '550e8400-e29b-41d4-a716-446655456789', 
+                "_links" : {
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456777" }
+                },
+                "id"  : '550e8400-e29b-41d4-a716-446655456777', 
                 "type" : 'temperature'
                 "minimum" : -100,
                 "maximum": 100,
                 "units"   : "celsius",
                 "precision" : 0.01
             }
+
+
+### get a reading definition from of a sensor [GET]
+
++ Response 200 (application/hal+json)
+[Reading][]
 
 ### Update a reading definition [PATCH]
 Modifies a reading in the list
@@ -202,13 +459,8 @@ Modifies a reading in the list
             "maximum" : 120
         }
 
-+ Response 200 (application/json)
-
-    + Body
-
-            { 
-                "updated":true
-            }
++ Response 200 (application/hal+json)
+[Reading][]
             
 ### Delete a reading definition [DELETE]
 removes a reading from the list
