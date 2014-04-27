@@ -230,7 +230,18 @@ Hardware related resource of the **Sensor Definition**
 + Response 204
 
 # Group Firmware
-Firmware related resource of the **Sensor Definition**
+Firmware related resource of the **Sensor Definition**. 
+Manufacturers are notoriously slow at releasing firmware updates, often third party suppliers have a better update cycle.
+
+The API expects to maintain a history of Firmare updates, that may include stable, latest and nighty builds.
+
+A firmware update has the followng structure:
+
+    version         String      is used as a unique identifier for the specific piece of software
+    date            Timestamp   identifies the relase date of the firmware
+    name            String      if the release has a name
+    supplier        String      The name of the firmware update - as mentioned Manufacturer are not the only suppliers of firmware upgrades
+    release-notes   String      The relase notes for a release. Currently no Format is specified, however Mardown seems like a good choice
 
 ## Firmware [/sensordefinitions/{sensorID}/firmware]
 + Parameters
@@ -248,31 +259,45 @@ Firmware related resource of the **Sensor Definition**
                     "self": {
                         "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware"
                     }
-                    "download": {"href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" }
+                    "download": {"href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" },
+                    "history" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history"}
                 }
-                version: "0.2",
-                date: 1398512005,
-                name: "RC1",
-                release-notes: "lorem ipsum"
-                "_embedded": {
-                    history: {
-                        "_links": {
-                            "self": {
-                                "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history"
-                            }
-                        }
-                    }
-                }
+                "version": "0.2",
+                "date": 1398512005,
+                "name": "RC1",
+                "supplier": "relayr",
+                "release-notes": "lorem ipsum"
             }
 
-### get current Firmware release [GET]
-
+### Get current Firmware release [GET]
+To get the current recommended version of the firmware use this endpoint. For other relases use the history endpoint
 + Response 200 (application/hal+json)
 [Firmware][]
 
+### Set current Firmware release [POST]
+
+To update the current firmware, you can post here. 
+If the firmware release is already in the history, you can provide just the version number. 
+If the release has not previously been uploaded, it will be automatically added to the firmware history.
+
++ Request
+    + Body 
+    
+            {
+                "version": "0.01",
+                "date": 13985412005,
+                "name": "RC1",
+                "supplier": "relayr",
+                "release-notes": "lorem ipsum"
+            }
+
++ Response 201 (application/hal+json)
+[Firmware][]
 
 
 ## Firmware History [/sensordefinitions/{sensorID}/firmware/history/{version}]
+The Firmware History displays a list of firmware relases for the device. 
+This will include current firmware, as well as Release candidates, Nightlies and legacy releases.
 
 
 + Parameters
@@ -302,37 +327,40 @@ Firmware related resource of the **Sensor Definition**
                                 "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" }
                                 "download": { "href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" }
                             },
-                            version: "0.1",
-                            date: 1398512005,
-                            name: "RC1",
-                            release-notes: "lorem ipsum"
+                            "version": "0.1",
+                            "date": 1398512005,
+                            "name": "RC1",
+                            "supplier" : "relayr",
+                            "release-notes": "lorem ipsum"
                         }
                     ]
                 },
                 "total": 1
             }
 
-### get Firmware History [GET]
+### Get Firmware History [GET]
+Returns a full list of releases.
+The Links component contains links to interesting relases.
 
 + Response 200 (application/hal+json)
 [Firmware History][]
 
-### add a Firmware release to the history [POST]
-
+### Add a Firmware release to the history [POST]
 + Request
     + Body
     
             {
-                version: "0.01",
-                date: 13985412005,
-                name: "RC1",
-                release-notes: "lorem ipsum"
+                "version": "0.01",
+                "date": 13985412005,
+                "name": "RC1",
+                "supplier": "relayr",
+                "release-notes": "lorem ipsum"
             }
 
 + Response 201 (application/hal+json)
 [Firmware][]
 
-### update a Firmware release [PATCH]
+### Update a Firmware release [PATCH]
 
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
@@ -343,7 +371,7 @@ Firmware related resource of the **Sensor Definition**
     + Body
     
             {
-                name: "RC1"
+                "name": "RC1"
             }
 
 + Response 200 (application/hal+json)
@@ -351,7 +379,6 @@ Firmware related resource of the **Sensor Definition**
 
 
 ### Delete a Firmware release [DELETE]
-removes a Firmware release from the list
 
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
