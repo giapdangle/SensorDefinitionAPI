@@ -470,7 +470,7 @@ Communication related resource of the **Sensor Definition**
                             "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" }
                         },
                         "id"  : '550e8400-e29b-41d4-a716-446655456711', 
-                        "type" : 'temperature'
+                        "meaning" : 'temperature'
                         "minimum" : -100,
                         "maximum": 100,
                         "units"   : "celsius",
@@ -480,7 +480,7 @@ Communication related resource of the **Sensor Definition**
                             "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456711/description/readings/550e8400-e29b-41d4-a716-446655456781" }
                         },
                         "id"  : '550e8400-e29b-41d4-a716-446655456781', 
-                        "type" : 'humidity'
+                        "meaning" : 'humidity'
                         "minimum" : 0,
                         "maximum": 100,
                         "units"   : "% Relative Humidity",
@@ -496,7 +496,7 @@ Adds a reading to the list
 + Request (application/json)
     
         {
-            "type" : 'humidity'
+            "meaning" : 'humidity'
             "minimum" : 0,
             "maximum": 100,
             "units"   : "% Relative Humidity",
@@ -511,7 +511,7 @@ Adds a reading to the list
                     "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/readings/550e8400-e29b-41d4-a716-446655456781" }
                 },
                 "id"  : '550e8400-e29b-41d4-a716-446655456781', 
-                "type" : 'humidity',
+                "meaning" : 'humidity',
                 "minimum" : 0,
                 "maximum": 100,
                 "units"   : "% Relative Humidity",
@@ -532,7 +532,7 @@ Adds a reading to the list
                     "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456777" }
                 },
                 "id"  : '550e8400-e29b-41d4-a716-446655456777', 
-                "type" : 'temperature'
+                "meaning" : 'temperature'
                 "minimum" : -100,
                 "maximum": 100,
                 "units"   : "celsius",
