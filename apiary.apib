@@ -81,14 +81,14 @@ The system contains a list of many sensor definitions. This endpoint will return
                 }]
             }
 
-### get colection of sensor definitions [GET]
+### Get colection of sensor definitions [GET]
 Retreive a list of Sensor Definitions from within the system
 
 + Response 200 (application/hal+json)
 [Sensor Definitions Collection][]
 
 
-### Adds a Sensor definition [POST]
+### Create a Sensor definition [POST]
 Adds a Sensor to the list
 
 + Request (application/json)
@@ -136,7 +136,7 @@ Adds a Sensor to the list
                 "productNumber"   : "rWB003"
             }
      
-### get sensor definition [GET]
+### Read a sensor definition [GET]
 Retreive a list of Sensor Definitions from within the system
 
 + Response 200 (application/hal+json)
@@ -200,12 +200,12 @@ Hardware related resource of the **Sensor Definition**
                 dimensions: {width:23, height: 15, depth: 45, units: "mm"}
             }
             
-### get current Hardware definition [GET]
+### Read current Hardware definition [GET]
 
 + Response 200 (application/hal+json)
 [Hardware Definition][]
 
-### get current Hardware definition [POST]
+### Create current Hardware definition [POST]
 
 + Request
     + Body 
@@ -219,7 +219,7 @@ Hardware related resource of the **Sensor Definition**
 + Response 201 (application/hal+json)
 [Hardware Definition][]
 
-### get current Hardware definition [PATCH]
+### Update current Hardware definition [PATCH]
 
 + Request
     + Body 
@@ -232,7 +232,7 @@ Hardware related resource of the **Sensor Definition**
 + Response 200 (application/hal+json)
 [Hardware Definition][]
 
-### remove current Hardware definition [DELETE]
+### Delete current Hardware definition [DELETE]
 
 + Response 204
 
@@ -276,7 +276,7 @@ A firmware update has the followng structure:
                 "release-notes": "lorem ipsum"
             }
 
-### Get current Firmware release [GET]
+### Read current Firmware release [GET]
 To get the current recommended version of the firmware use this endpoint. For other relases use the history endpoint
 + Response 200 (application/hal+json)
 [Firmware][]
@@ -345,14 +345,14 @@ This will include current firmware, as well as Release candidates, Nightlies and
                 "total": 1
             }
 
-### Get Firmware History [GET]
+### Read Firmware History [GET]
 Returns a full list of releases.
 The Links component contains links to interesting relases.
 
 + Response 200 (application/hal+json)
 [Firmware History][]
 
-### Add a Firmware release to the history [POST]
+### Create a Firmware release to the history [POST]
 + Request
     + Body
     
@@ -421,12 +421,12 @@ Communication related resource of the **Sensor Definition**
                 "physical": ["ethernet", "wifi"]
             }
             
-### get current Communication definition [GET]
+### Read current Communication definition [GET]
 
 + Response 200 (application/hal+json)
 [Communication Definition][]
 
-### get current Communication definition [POST]
+### Create current Communication definition [POST]
 
 + Request
     + Body 
@@ -439,7 +439,7 @@ Communication related resource of the **Sensor Definition**
 + Response 201 (application/hal+json)
 [Communication Definition][]
 
-### get current Communication definition [PATCH]
+### Update current Communication definition [PATCH]
 
 + Request
     + Body 
@@ -452,14 +452,14 @@ Communication related resource of the **Sensor Definition**
 + Response 200 (application/hal+json)
 [Communication Definition][]
 
-### remove current Communication definition [DELETE]
+### Delete current Communication definition [DELETE]
 
 + Response 204
 
 # Group Readings
 
 ## Sensor Reading Definitions [/sensordefinitions/{sensorID}/readings]
-### get list of reading definitions available from of a sensor [GET]
+### Get list of reading definitions available from of a sensor [GET]
 
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
@@ -498,7 +498,7 @@ Communication related resource of the **Sensor Definition**
                 "total": 1
             }´
 
-### Adds a reading definition [POST]
+### Creates a reading definition [POST]
 Adds a reading to the list
 
 + Request (application/json)
@@ -548,7 +548,7 @@ Adds a reading to the list
             }
 
 
-### get a reading definition from of a sensor [GET]
+### Get a reading definition from of a sensor [GET]
 
 + Response 200 (application/hal+json)
 [Reading][]
