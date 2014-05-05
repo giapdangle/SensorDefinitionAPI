@@ -188,13 +188,15 @@ Hardware related resource of the **Sensor Definition**
             {
                 "_links": {
                     "self": {
-                        "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/hardware"
+                        "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/hardware",
+                        "datasheet": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/datasheet.pdf"
                     }
                 }
                 date: 1398512005,
                 voltage: "3.3v",
                 power: "CR3032 coin-cell"
-                release-notes: "lorem ipsum"
+                release-notes: "lorem ipsum",
+                output: {"video": ["HDMI"], "audio":["spdif", "analog"], digital: ["pwm", "gpio"]},
                 dimensions: {width:23, height: 15, depth: 45, units: "mm"}
             }
             
