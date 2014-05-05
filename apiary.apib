@@ -416,8 +416,9 @@ Communication related resource of the **Sensor Definition**
                         "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/communication"
                     }
                 }
-                "protocol" : "MQTT",
-                "encryption" : "TLS 1.2"
+                "protocol" : {"name":"MQTT", "version":"3.1", "transport": "tcp/ip"},
+                "encryption" : "TLS 1.2",
+                "physical": ["ethernet", "wifi"]
             }
             
 ### get current Communication definition [GET]
@@ -431,7 +432,7 @@ Communication related resource of the **Sensor Definition**
     + Body 
     
             {
-                "protocol" : "MQTT",
+                "protocol" : {"name":"MQTT"},
                 "encryption" : "TLS 1.2"
             }
 
@@ -444,7 +445,7 @@ Communication related resource of the **Sensor Definition**
     + Body 
     
             {
-                "protocol" : "MQTT",
+                "protocol" : {"name":"MQTT", "verion":"3.1.1"},
                 "encryption" : "TLS 1.2"
             }
 
