@@ -458,7 +458,21 @@ Communication related resource of the **Sensor Definition**
 
 # Group Readings
 
+Sensors can deliver many differnet readings. For example the Wunderbar uses the Meas-Spec HPP828E031 for the Tempertaure / humidity sensor. It is a single chip which can provide both readings.
+Typically the device sends the readings as a unitary value which must then be parsed. by the recevier of the data.
+
+Values sent will typically be a `Number`with no additional Information. This makes it naturally difficult for a developer to interpret. To give meaning to the number we provide metadata about the reading.
+
+Within Electrical Engineering the term `meaning`is used to explain waht is being measured, for instance "Temperature or Humidity"
+Combining this with `units` gives the developer enough information to understand what the value is.
+
+To evaluate the fitness of a reading for the intended purpose we provide three values `max` and `min` tell the developer which range of readings he can expect, and `precision`tell him which level of precision to expect from the sensor.
+
+
 ## Sensor Reading Definitions [/sensordefinitions/{sensorID}/readings]
+
+A SensorDefinition must be able to provide a list of the readings offered by the device it represents.
+
 ### Get list of reading definitions available from of a sensor [GET]
 
 + Parameters
@@ -470,7 +484,10 @@ Communication related resource of the **Sensor Definition**
      
             {
                 "_links": {
-                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings" }
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings" },
+                    "next": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" },
+                    "first": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" },
+                    "last": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456781" }
                     },
                 "_embedded": {
                     "readings" : [{
@@ -495,7 +512,7 @@ Communication related resource of the **Sensor Definition**
                         "precision" : 0.01
                     }]
                 },
-                "total": 1
+                "total": 2
             }´
 
 ### Creates a reading definition [POST]
