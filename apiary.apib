@@ -189,7 +189,8 @@ Hardware related resource of the **Sensor Definition**
                 "_links": {
                     "self": {
                         "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/hardware",
-                        "datasheet": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/datasheet.pdf"
+                        "datasheet": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/datasheet.pdf",
+                        "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                     }
                 }
                 date: 1398512005,
@@ -244,11 +245,15 @@ The API expects to maintain a history of Firmare updates, that may include stabl
 
 A firmware update has the followng structure:
 
-    version         String      is used as a unique identifier for the specific piece of software
-    date            Timestamp   identifies the relase date of the firmware
-    name            String      if the release has a name
-    supplier        String      The name of the firmware update - as mentioned Manufacturer are not the only suppliers of firmware upgrades
-    release-notes   String      The relase notes for a release. Currently no Format is specified, however Mardown seems like a good choice
+**version**         *String*      is used as a unique identifier for the specific piece of software
+
+**date**            *Timestamp*   identifies the relase date of the firmware
+
+**name**            *String*      if the release has a name
+
+**supplier**        *String*      The name of the firmware update - as mentioned Manufacturer are not the only suppliers of firmware upgrades
+
+**release-notes**   *String*      The relase notes for a release. Currently no Format is specified, however Mardown seems like a good choice
 
 ## Firmware [/sensordefinitions/{sensorID}/firmware]
 + Parameters
@@ -267,7 +272,8 @@ A firmware update has the followng structure:
                         "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware"
                     }
                     "download": {"href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" },
-                    "history" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history"}
+                    "history" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history"},
+                    "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                 }
                 "version": "0.2",
                 "date": 1398512005,
@@ -331,8 +337,9 @@ This will include current firmware, as well as Release candidates, Nightlies and
                     "history": [
                         {
                             "_links" : {
-                                "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" }
-                                "download": { "href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" }
+                                "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/firmware/history/0.1" },
+                                "download": { "href": "http://example.org/downloads/550e8400-e29b-41d4-a716-446655456789_0.1.zip" },
+                                "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                             },
                             "version": "0.1",
                             "date": 1398512005,
@@ -413,7 +420,8 @@ Communication related resource of the **Sensor Definition**
             {
                 "_links": {
                     "self": {
-                        "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/communication"
+                        "href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789/communication",
+                        "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                     }
                 }
                 "protocol" : {"name":"MQTT", "version":"3.1", "transport": "tcp/ip"},
@@ -468,6 +476,17 @@ Combining this with `units` gives the developer enough information to understand
 
 To evaluate the fitness of a reading for the intended purpose we provide three values `max` and `min` tell the developer which range of readings he can expect, and `precision`tell him which level of precision to expect from the sensor.
 
+**id**          *String*
+
+**meaning**     *String*
+
+**minimum**     *Number*
+
+**maximum**     *Number*
+
+**units**       *String*
+
+**precision**   *Number (float)*
 
 ## Sensor Reading Definitions [/sensordefinitions/{sensorID}/readings]
 
