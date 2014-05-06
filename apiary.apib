@@ -474,11 +474,11 @@ To evaluate the fitness of a reading for the intended purpose we provide three v
 A SensorDefinition must be able to provide a list of the readings offered by the device it represents.
 
 ### Get list of reading definitions available from of a sensor [GET]
-
+returns a list of readings as hal+json, with links to navigate the collection, as well as a total length, and the values stored in embedded
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
     
-+ Response 200 (application/json)
++ Response 200 (application/hal+json)
    
      + Body
      
@@ -492,7 +492,8 @@ A SensorDefinition must be able to provide a list of the readings offered by the
                 "_embedded": {
                     "readings" : [{
                         "_links" : {
-                            "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" }
+                            "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" },
+                            "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                         },
                         "id"  : '550e8400-e29b-41d4-a716-446655456711', 
                         "meaning" : 'temperature'
@@ -502,7 +503,8 @@ A SensorDefinition must be able to provide a list of the readings offered by the
                         "precision" : 0.01
                     },{
                         "_links" : {
-                            "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456711/description/readings/550e8400-e29b-41d4-a716-446655456781" }
+                            "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456711/description/readings/550e8400-e29b-41d4-a716-446655456781" },
+                            "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                         },
                         "id"  : '550e8400-e29b-41d4-a716-446655456781', 
                         "meaning" : 'humidity'
@@ -515,8 +517,8 @@ A SensorDefinition must be able to provide a list of the readings offered by the
                 "total": 2
             }´
 
-### Creates a reading definition [POST]
-Adds a reading to the list
+### Create a reading definition [POST]
+Adds a Reading to the list
 
 + Request (application/json)
     
@@ -533,7 +535,8 @@ Adds a reading to the list
     
             {
                 "_links" : {
-                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/readings/550e8400-e29b-41d4-a716-446655456781" }
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/readings/550e8400-e29b-41d4-a716-446655456781" },
+                    "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                 },
                 "id"  : '550e8400-e29b-41d4-a716-446655456781', 
                 "meaning" : 'humidity',
@@ -554,7 +557,8 @@ Adds a reading to the list
      
             {
                 "_links" : {
-                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456777" }
+                    "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456777" },
+                    "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                 },
                 "id"  : '550e8400-e29b-41d4-a716-446655456777', 
                 "meaning" : 'temperature'
@@ -567,11 +571,14 @@ Adds a reading to the list
 
 ### Get a reading definition from of a sensor [GET]
 
+Get an individual reading
+
 + Response 200 (application/hal+json)
 [Reading][]
 
 ### Update a reading definition [PATCH]
-Modifies a reading in the list
+
+Modifies a reading
     
 + Request (application/json)
     
@@ -583,6 +590,7 @@ Modifies a reading in the list
 [Reading][]
             
 ### Delete a reading definition [DELETE]
+
 removes a reading from the list
    
 + Response 204
