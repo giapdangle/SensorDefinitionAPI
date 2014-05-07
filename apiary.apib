@@ -23,64 +23,67 @@ The system contains a list of many sensor definitions. This endpoint will return
      
             {
                 "_links": {
-                    "self": {
-                        "href": "http://example.org/sensors"
-                    }
+                    "self": {"href": "http://example.org/sensors"},
+                    "first": { "href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790" },
+                    "last": { "href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792" }
                 },
-                "sensors" : [
-                {
-                    "_links": {
-                        "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789"},
-                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/hardware"},
-                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/firmware"},
-                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/communication"},
-                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/readings"},
-                        "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/temp-humidity"}
-                    },
-                    "id"  : '550e8400-e29b-41d4-a716-446655456789', 
-                    "manufacturer" : relayr,
-                    "name": 'Temperature / Humidity Sensor',
-                    "productNumber"   : "rWB001"
-                },{
-                    "_links": {
-                        "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790"},
-                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/hardware"},
-                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/firmware"},
-                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/communication"},
-                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/readings"},
-                        "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/sound"}
-                    },
-                    "id"  : '550e8400-e29b-41d4-a716-446655456790', 
-                    "manufacturer" : relayr,
-                    "name": 'Sound Level Sensor',
-                    "productNumber"   : "rWB002"
-                },{
-                    "_links": {
-                        "self": { "href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791"},
-                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/hardware"},
-                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/firmware"},
-                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/communication"},
-                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/readings"},
-                        "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/acc-gyro"}
-                    },
-                    "id"  : '550e8400-e29b-41d4-a716-446655456791', 
-                    "manufacturer" : relayr,
-                    "name": 'Accelerometer / Gyrosope',
-                    "productNumber"   : "rWB003"
-                },{
-                    "_links": {
-                        "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792"},
-                        "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/hardware"},
-                        "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/firmware"},
-                        "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/communication"},
-                        "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/readings"},
-                        "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/light-color-prox"}
-                    },
-                    "id"  : '550e8400-e29b-41d4-a716-446655456792', 
-                    "manufacturer" : relayr,
-                    "name": 'Light / Color / Proximity Sensor',
-                    "productNumber"   : "rWB003"
-                }]
+                "count" : 4,
+                "_embedded": {
+                    "sensors" : [
+                    {
+                        "_links": {
+                            "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789"},
+                            "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/hardware"},
+                            "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/firmware"},
+                            "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/communication"},
+                            "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456789/readings"},
+                            "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/temp-humidity"}
+                        },
+                        "id"  : '550e8400-e29b-41d4-a716-446655456789', 
+                        "manufacturer" : relayr,
+                        "name": 'Temperature / Humidity Sensor',
+                        "productNumber"   : "rWB001"
+                    },{
+                        "_links": {
+                            "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790"},
+                            "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/hardware"},
+                            "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/firmware"},
+                            "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/communication"},
+                            "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456790/readings"},
+                            "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/sound"}
+                        },
+                        "id"  : '550e8400-e29b-41d4-a716-446655456790', 
+                        "manufacturer" : relayr,
+                        "name": 'Sound Level Sensor',
+                        "productNumber"   : "rWB002"
+                    },{
+                        "_links": {
+                            "self": { "href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791"},
+                            "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/hardware"},
+                            "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/firmware"},
+                            "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/communication"},
+                            "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456791/readings"},
+                            "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/acc-gyro"}
+                        },
+                        "id"  : '550e8400-e29b-41d4-a716-446655456791', 
+                        "manufacturer" : relayr,
+                        "name": 'Accelerometer / Gyrosope',
+                        "productNumber"   : "rWB003"
+                    },{
+                        "_links": {
+                            "self": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792"},
+                            "hardware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/hardware"},
+                            "firmware": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/firmware"},
+                            "communication": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/communication"},
+                            "readings": {"href": "http://example.org/sensors/550e8400-e29b-41d4-a716-446655456792/readings"},
+                            "documentation" : {"href" : "http://example.org/documentation/wunderbar/sensors/light-color-prox"}
+                        },
+                        "id"  : '550e8400-e29b-41d4-a716-446655456792', 
+                        "manufacturer" : relayr,
+                        "name": 'Light / Color / Proximity Sensor',
+                        "productNumber"   : "rWB003"
+                    }]
+                }
             }
 
 ### Get colection of sensor definitions [GET]
@@ -195,12 +198,24 @@ Hardware related resource of the **Sensor Definition**
                         "parent" : {"href": "http://example.org/sensor/550e8400-e29b-41d4-a716-446655456789"}
                     }
                 }
-                date: 1398512005,
-                voltage: "3.3v",
-                power: "CR3032 coin-cell"
-                release-notes: "lorem ipsum",
-                output: {"video": ["HDMI"], "audio":["spdif", "analog"], digital: ["pwm", "gpio"]},
-                dimensions: {width:23, height: 15, depth: 45, units: "mm"}
+                "date": 1398512005,
+                "voltage-range": {min: 2700, max: 4900, unit: "mV"},
+                "power": "CR3032 coin-cell",
+                "IOconnectors": {
+                    "usb": ["USB-2.0-microB"], 
+                    "audio": ["3.5mm-stereo-out", "3.5mm-mono-mic"],
+                    "ethernet": ["RJ-45"],
+                    "1.25mm-pin-header": {
+                        "gpio": ["6pin"], 
+                        "bus": ["I2C", "UART"]
+                    }
+                },
+                "onboard-sensors": {"gyro/accelerometer", "barometer"},
+                "program-debug": {“10-pin-1.25mm": "SWD"},
+                "wireless": {"BluetoothLE"]};
+                "release-notes": "lorem ipsum",
+                "output": {"video": ["HDMI"], "audio":["spdif", "analog"], digital: ["pwm", "gpio"]},
+                "dimensions": {width:23, height: 15, depth: 45, units: "mm"}
             }
             
 ### Read current Hardware definition [GET]
@@ -506,7 +521,6 @@ returns a list of readings as hal+json, with links to navigate the collection, a
             {
                 "_links": {
                     "self": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings" },
-                    "next": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" },
                     "first": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456711" },
                     "last": { "href": "/sensor/550e8400-e29b-41d4-a716-446655456789/description/readings/550e8400-e29b-41d4-a716-446655456781" }
                     },
@@ -535,7 +549,7 @@ returns a list of readings as hal+json, with links to navigate the collection, a
                         "precision" : 0.01
                     }]
                 },
-                "total": 2
+                "count": 2
             }´
 
 ### Create a reading definition [POST]
