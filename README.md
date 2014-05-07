@@ -12,4 +12,4 @@ You can view the definition in it's raw form in apiary.apib, or beautifully rend
  
 icon courtesy of http://www.visualpharm.com
 
-This APi is release under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/)
+This API is release under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/)
