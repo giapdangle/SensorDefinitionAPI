@@ -9,3 +9,5 @@ You can view the definition in it's raw form in apiary.apib, or beautifully rend
 
  - http://docs.sensordefinitionapi.apiary.io/
  - https://github.com/relayr/SensorDefinitionAPI
+ 
+ icon courtesy of http://www.visualpharm.com
