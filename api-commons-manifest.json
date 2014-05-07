@@ -1,0 +1,17 @@
+{
+    "apis": [{
+        "name": "SensorDefinitionAPI",
+        "description": "An API for defining sensors. It creates an abstraction for sensor manufacturers to describe the physical and data features of a connected sensor",
+        "image": "https://github.com/relayr/SensorDefinitionAPI/blob/master/Weather-Thermometer-icon.png",
+        "keywords": "Sensor, Hardware, Firmware, Readings, Connected, Internet of Things, IoT, M2M",
+        "license": "http://creativecommons.org/licenses/by/4.0/",
+        "attribution": "relayr (iThings4U GmbH)",
+        "url": "https://github.com/relayr/SensorDefinitionAPI/api-commons-manifest.json",
+        "definitions": [{
+            "type": "API Blueprint",
+            "url": "https://github.com/relayr/SensorDefinitionAPI/apiary.apib"
+        }]
+    }],
+    "tags": "api-commons-manifest",
+    "updated": "07/05/2014"
+}
