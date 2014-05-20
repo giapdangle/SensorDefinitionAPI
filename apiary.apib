@@ -88,15 +88,13 @@ add or delete sensors or modify a sensor within the list.
                 }
             }
 
-### Get colection of sensor definitions [GET]
-Retreives a list of sensor definitions from within the system
+### Retreives a list of sensor definitions - for multiple sensors [GET]
 
 + Response 200 (application/hal+json)
 [Sensor Definitions Collection][]
 
 
-### Create sensor definition [POST]
-Adds a sensor to the list
+### Adds a sensor to the list [POST]
 
 + Request (application/json)
     
@@ -143,14 +141,12 @@ Adds a sensor to the list
                 "productNumber"   : "rWB003"
             }
      
-### Retrieve sensor definitions [GET]
-Returns a list of sensor definitions.
+### Returns a list of sensor definitions for a specific sensor [GET]
 
 + Response 200 (application/hal+json)
 [Sensor Definition][]
 
-### Update  sensor definition [PATCH]
-Modifies a sensor in the list
+### Modifies a specific sensor in the list [PATCH]
 + Parameters
     + sensorID (required, string, `550e8400-e29b-41d4-a716-446655456789`) ... String `id` of the Sensor
     
